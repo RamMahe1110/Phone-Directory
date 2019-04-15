@@ -4,7 +4,8 @@ import "./contactList.css";
 class ContactList extends Component {
   state = {};
   render() {
-    const { onEdit, onDelete, onRoute } = this.props;
+    const { onEdit, onDelete, onRoute, contactList } = this.props;
+    if (!contactList.length) return null;
     return (
       <React.Fragment>
         <button className="btn  btn-primary add-btn" onClick={onRoute}>
@@ -20,7 +21,7 @@ class ContactList extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.contactList.map((item, index) => (
+            {contactList.map((item, index) => (
               <tr key={index}>
                 <th scope="row">{item.name}</th>
                 <td>{item.number}</td>
